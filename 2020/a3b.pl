@@ -12,53 +12,33 @@ $n = 1;
 
 while(<>)
 {
-
-#    next if($skip > 0);
- #   $skip = $skip * $skip;
-    chomp();#$_ is one line
-
+    chomp();
 
     $temp = $slope % 31;
-#if ($temp > 31)
-#{
-#    $temp % 32;
-#}
 
-#    for($i = $slope; $i <= $temp; $i++)#i hits slope location
-#{
-
-
-#foreach $char (split//, $_)
-#{
-
-#print "\_ is: $_\n";
-#print "temp is: $temp\n";
-#print "slope is: $slope\n";
-
-    $skip = (-1) ** $n;
+    $skip = (-1) ** $n;#exponent for alternating series (-1)^n
     $n++;
 
-    print "Skip is $skip\n";
-    print "n is $n\n";
+    #TEST PARAMS
+    #print "Skip is $skip\n";
+    #print "n is $n\n";
 
     next if($skip > 0);
 
 
-if(substr($_, $temp, 1) =~ $tree) #substr($char?
-{   
+    if(substr($_, $temp, 1) =~ $tree)
+    {
+    
+    #TEST PARAMS
+    # print "TREE FOUND at index $temp\n";
+    #print "$_\n";
+    #print " \n";
+    
+    $count++;
+    }#count TREE
 
-   # print "TREE FOUND at index $temp\n";
-print "$_\n";
-    print " \n";
-   $count++;
-}#count TREE
-#}#for each
-
-$slope += 1;#ADJUST SLOPE HERE
-#}#for i
-
-
+    $slope += 1;#ADJUST SLOPE HERE
 }#while<>
 print "count is: $count\n";
-$total = 86 * 159 * 97 * 88 * $count;
+$total = 86 * 159 * 97 * 88 * $count;#Manually compute previous trials
 print "GAND TOTAL: $total\n";
