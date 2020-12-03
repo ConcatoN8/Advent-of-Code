@@ -1,52 +1,39 @@
 #!/usr/bin/perl
 
 use warnings;
-#use diagnostics;
+use diagnostics;
 
 $count = 0;
 while(<>)
 {
     chomp();
-#    print "$_\n";
 if ($_ =~ /(.*)-(.*) (.*): (.*)/gi)
 {
+    $lower = $1;#lower bound
+    $upper = $2;#upper bound
+    $letter = $3;#letter to compare against
+    $code = $4;#"password"
 
-    $lower = $1;
-    $upper = $2;
-    $letter = $3;#letter
-    $code = $4;#code
+    $charCount = 0;    
+    foreach $char (split//, $code)
+    {
+        if($char =~ $letter)
+        {
+            print "$char\n";
+            $charCount++;
+        }#if Char
+    }#forEach
 
-$charCount = 0;    
-foreach $char (split//, $code)
-{
+    #TEST PARAMS
+    #print "$charCount\n";
+    #print "Upper: $upper\n";
+    #print "Lower: $lower\n";
 
-if($char =~ $letter)
-{
-print "$char\n";
-    $charCount++;
-}#if Char
+    if($charCount <= $upper && $charCount >= $lower)
+    {
+        $count++;
+    }#if charCount  
 
-
-#if($charCount < $upper && $charCount > $lower)
-#{
- #   $count++;
-#}#if charCount
-
-
-}#forEach
-
-print "$charCount\n";
-print "Upper: $upper\n";
-print "Lower: $lower\n";
-
-if($charCount <= $upper && $charCount >= $lower)
-{
-    $count++;
-}#if charCount  
-
-}
-#if
-
-} 
-#while<>
+}#if
+}#while<>
 print "$count\n";
