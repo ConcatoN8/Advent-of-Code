@@ -9,37 +9,24 @@ $tree = "\#";
 
 while(<>)
 {
-    chomp();#$_ is one line
+    chomp();
 
     $temp = $slope % 31;
-#if ($temp > 31)
-#{
-#    $temp % 32;
-#}
 
-#    for($i = $slope; $i <= $temp; $i++)#i hits slope location
-#{
+    #TEST PARAMS
+    #print "\_ is: $_\n";
+    #print "temp is: $temp\n";
+    #print "slope is: $slope\n";
 
-
-#foreach $char (split//, $_)
-#{
-
-print "\_ is: $_\n";
-print "temp is: $temp\n";
-print "slope is: $slope\n";
-
-if(substr($_, $temp, 1) =~ $tree) #substr($char?
-{
-    print "TREE FOUND at index $temp\n";
-print "$_\n";
-    print " \n";
-   $count++;
-}#count TREE
-#}#for each
-
-$slope += 3;
-#}#for i
-
-
+    if(substr($_, $temp, 1) =~ $tree)
+    {
+        #TEST PARAMS
+        #print "TREE FOUND at index $temp\n";
+        #print "$_\n";
+        $count++;
+    }#count TREE
+    
+    $slope += 3;
+    
 }#while<>
 print "$count\n";
