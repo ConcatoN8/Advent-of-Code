@@ -9,19 +9,17 @@ $fieldsFound = 0;
 while(<>)
 {
 
-if(/^\s+$/)
-{
-$fieldsFound = 0;
-}
+    if(/^\s+$/)
+    {
+    $fieldsFound = 0;
+    }
 
 chomp();
-
 
 @fields = split/\s+/,$_;
 
 foreach(@fields)
 {
-
     if($_ =~/(.*):(.*)/)
     {
     $a = $1;
@@ -43,14 +41,16 @@ foreach(@fields)
                     $count++;
                     }#if all fields met
                 
+                #TEST PARAMS
+                #print "field is: $a\n";
+                #print "fieldsFound is: $fieldsFound\n";
                 
-                print "field is: $a\n";
-                print "fieldsFound is: $fieldsFound\n";
                 }#if match
             }#for i
         }#else (not cid)
     }#if : split
 }#forEach field
+
 
 }# while<>
 
